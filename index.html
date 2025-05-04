@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Age Calculator</h1>
+    </header>
+    <div class="calculator">
+        <h1>🎡Age Calculator</h1>
+        <h4>Enter Your date of birth!!</h4>
+        <div class="wheel-inputs">
+            <select id="day">
+                <option value="">Day</option>
+            </select>
+            <select id="month">
+                <option value="">Month</option>
+            </select>
+            <select id="year">
+                <option value="">Year</option>
+            </select>
+        </div>
+        <button onclick="calculateAge()">Calculate My Age</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const daySelect = document.getElementById('day');
+        const monthSelect = document.getElementById('month');
+        const yearSelect = document.getElementById('year');
+
+        // Populate day select
+        for (let i = 1; i <= 31; i++) {
+            let opt = document.createElement('option');
+            opt.value = i;
+            opt.text = i;
+            daySelect.add(opt);
+        }
+
+        // Populate month select
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        monthNames.forEach((m, idx) => {
+            let opt = document.createElement('option');
+            opt.value = idx + 1;
+            opt.text = m;
+            monthSelect.add(opt);
+        });
+
+        // Populate year select (from current year back to 1900)
+        const currentYear = new Date().getFullYear();
+        for (let i = currentYear; i >= 1900; i--) {
+            let opt = document.createElement('option');
+            opt.value = i;
+            opt.text = i;
+            yearSelect.add(opt);
+        }
+
+        function calculateAge() {
+            const day = parseInt(daySelect.value);
+            const month = parseInt(monthSelect.value);
+            const year = parseInt(yearSelect.value);
+            const resultDiv = document.getElementById('result');
+
+            if (!day || !month || !year) {
+                resultDiv.innerText = ' Please select day, month, and year.';
+                return;
+            }
+
+            const birthDate = new Date(year, month - 1, day);
+            const today = new Date();
+
+            if (birthDate > today) {
+                resultDiv.innerText = ' Cannot Evaluate Future Birthdays!';
+                return;
+            }
+
+            let years = today.getFullYear() - birthDate.getFullYear();
+            let months = today.getMonth() - birthDate.getMonth();
+            let days = today.getDate() - birthDate.getDate();
+
+            if (days < 0) {
+                months--;
+                const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            resultDiv.innerHTML = ` 💐You are <strong>${years}</strong> years, <strong>${months}</strong> months, and <strong>${days}</strong> days old.`;
+        }
+    </script>
+
+<footer class="main-footer">
+    <h3>&copy; 2025 Sri Kruthi</h3>
+    <span>For Queries, Contact</span><br>
+    <span>Contact:8179075295</span><br>
+    <span>Email:mksrikruthi2006@gmail.com</span>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow-x: hidden;
+}
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #f57c00;
+    color: white;
+    width: 100%;
+    margin-bottom: 48px;
+}
+.calculator {
+    background: #fff;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    animation: popIn 0.5s ease;
+}
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.calculator h1 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2.2em;
+}
+.wheel-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    background: #f9f9f9;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: border 0.3s ease;
+    flex: 1;
+    text-align-last: center;
+}
+select:hover, select:focus {
+    border-color: #f57c00;
+}
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    background-color: #f57c00;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+button:hover {
+    background-color: #ef6c00;
+}
+#result {
+    margin-top: 25px;
+    font-size: 1.3em;
+    color: #444;
+}
+footer{
+    text-align: center;
+    padding: 10px;
+    background-color: #f57c00;
+    color: white;
+    width: 100%;
+    margin-top: 30px;
+}
+footer span{
+    display: block;
+    padding: 3px 0;
+}
